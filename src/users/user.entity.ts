@@ -1,6 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
-@Entity()
+@Entity('ifg_m_users')
 export class User {
   @PrimaryGeneratedColumn()
   user_id: number;
@@ -20,18 +26,15 @@ export class User {
   @Column()
   created_by: number;
 
-  @Column()
-  created_date: string;
+  @CreateDateColumn()
+  created_date: Date;
 
   @Column()
   last_update_by: number;
 
-  @Column()
-  last_update_date: string;
+  @UpdateDateColumn()
+  last_update_date: Date;
 
   @Column()
   perusahaan_id: number;
-
-  @Column({ default: true })
-  isActive: boolean;
 }

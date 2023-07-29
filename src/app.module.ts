@@ -21,6 +21,7 @@ import { User } from './users/user.entity';
         password: configService.get<string>('DATABASE_PASSWORD'),
         database: configService.get<string>('DATABASE_DBNAME'),
         entities: [User],
+        ssl: { rejectUnauthorized: true },
         synchronize: true,
       }),
     }),
