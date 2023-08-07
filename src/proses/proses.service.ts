@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { CreateProseDto } from './dto/create-prose.dto';
-import { UpdateProseDto } from './dto/update-prose.dto';
+import { UpdateProsesDto } from './dto/update-proses.dto';
+import { CreateProsesDto } from './dto/create-proses.dto';
 
 @Injectable()
 export class ProsesService {
-  create(createProseDto: CreateProseDto) {
+  create(createProsesDto: CreateProsesDto) {
     return 'This action adds a new prose';
   }
 
@@ -16,7 +16,7 @@ export class ProsesService {
     return `This action returns a #${id} prose`;
   }
 
-  update(id: number, updateProseDto: UpdateProseDto) {
+  update(id: number, updateProsesDto: UpdateProsesDto) {
     return `This action updates a #${id} prose`;
   }
 

@@ -1,14 +1,22 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ProsesService } from './proses.service';
-import { CreateProseDto } from './dto/create-prose.dto';
-import { UpdateProseDto } from './dto/update-prose.dto';
+import { UpdateProsesDto } from './dto/update-proses.dto';
+import { CreateProsesDto } from './dto/create-proses.dto';
 
 @Controller('proses')
 export class ProsesController {
   constructor(private readonly prosesService: ProsesService) {}
 
   @Post()
-  create(@Body() createProseDto: CreateProseDto) {
+  create(@Body() createProseDto: CreateProsesDto) {
     return this.prosesService.create(createProseDto);
   }
 
@@ -23,7 +31,7 @@ export class ProsesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProseDto: UpdateProseDto) {
+  update(@Param('id') id: string, @Body() updateProseDto: UpdateProsesDto) {
     return this.prosesService.update(+id, updateProseDto);
   }
 
