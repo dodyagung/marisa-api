@@ -8,15 +8,15 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
-import { AssetService } from './asset.service';
-import { CreateAssetDto } from './dto/create-asset.dto';
-import { UpdateAssetDto } from './dto/update-asset.dto';
+import { AsetService } from './aset.service';
+import { CreateAsetDto } from './dto/create-aset.dto';
+import { UpdateAsetDto } from './dto/update-aset.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @UseGuards(JwtAuthGuard)
-@Controller('asset')
-export class AssetController {
-  constructor(private readonly assetService: AssetService) {}
+@Controller('aset')
+export class AsetController {
+  constructor(private readonly asetService: AsetService) {}
 
   // @Post()
   // create(@Body() createAssetDto: CreateAssetDto) {
@@ -25,7 +25,7 @@ export class AssetController {
 
   @Get('/')
   findAll() {
-    return this.assetService.findAll();
+    return this.asetService.findAll();
   }
 
   // @Get(':id')

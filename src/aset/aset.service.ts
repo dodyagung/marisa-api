@@ -1,22 +1,22 @@
 import { Injectable } from '@nestjs/common';
-import { CreateAssetDto } from './dto/create-asset.dto';
-import { UpdateAssetDto } from './dto/update-asset.dto';
-import { Asset } from './entities/asset.entity';
+import { CreateAsetDto } from './dto/create-aset.dto';
+import { UpdateAsetDto } from './dto/update-aset.dto';
+import { Aset } from './entities/aset.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
-export class AssetService {
+export class AsetService {
   constructor(
-    @InjectRepository(Asset)
-    private asetRepository: Repository<Asset>,
+    @InjectRepository(Aset)
+    private asetRepository: Repository<Aset>,
   ) {}
 
   // create(createAssetDto: CreateAssetDto) {
   //   return 'This action adds a new asset';
   // }
 
-  findAll(): Promise<Asset[]> {
+  findAll(): Promise<Aset[]> {
     return this.asetRepository.find();
   }
 

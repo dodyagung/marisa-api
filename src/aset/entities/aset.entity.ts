@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 
 @Entity('ifg_dt_aset')
-export class Asset {
+export class Aset {
   @PrimaryGeneratedColumn()
   aset_id: number;
 
