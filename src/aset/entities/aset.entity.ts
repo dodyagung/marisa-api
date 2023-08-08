@@ -1,9 +1,15 @@
+import { AsetDetail } from 'src/aset-detail/entities/aset-detail.entity';
+import { Kategori } from 'src/kategori/entities/kategori.entity';
+import { Perusahaan } from 'src/perusahaan/entities/perusahaan.entity';
 import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
+  OneToOne,
 } from 'typeorm';
 
 @Entity('ifg_dt_aset')
@@ -11,14 +17,16 @@ export class Aset {
   @PrimaryGeneratedColumn()
   aset_id: number;
 
-  @Column()
-  kategori_id: number;
+  @ManyToOne(() => Kategori)
+  @JoinColumn({ name: 'kategori_id' })
+  kategori: Kategori;
+
+  @ManyToOne(() => Perusahaan)
+  @JoinColumn({ name: 'perusahaan_id' })
+  perusahaan: Perusahaan;
 
   @Column()
-  perusahaan_id: number;
-
-  @Column()
-  proses_id: number;
+  proses: number;
 
   @Column()
   name: string;
@@ -46,4 +54,8 @@ export class Aset {
 
   @Column()
   kode_occupancy: number;
+
+  @OneToOne(() => AsetDetail)
+  @JoinColumn({ name: 'aset_id' })
+  aset_detail: AsetDetail;
 }

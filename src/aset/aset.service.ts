@@ -17,7 +17,26 @@ export class AsetService {
   // }
 
   findAll(): Promise<Aset[]> {
-    return this.asetRepository.find();
+    return this.asetRepository.find({
+      select: {
+        aset_id: true,
+        name: true,
+        kategori: {
+          name: true,
+        },
+        perusahaan: {
+          name: true,
+        },
+        aset_detail: {
+          detail_alamat: true,
+        },
+      },
+      relations: {
+        kategori: true,
+        perusahaan: true,
+        aset_detail: true,
+      },
+    });
   }
 
   // findOne(id: number): Promise<Asset | null> {
