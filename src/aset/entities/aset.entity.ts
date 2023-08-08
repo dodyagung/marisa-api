@@ -1,6 +1,3 @@
-import { AsetDetail } from 'src/aset-detail/entities/aset-detail.entity';
-import { Kategori } from 'src/kategori/entities/kategori.entity';
-import { Perusahaan } from 'src/perusahaan/entities/perusahaan.entity';
 import {
   Entity,
   Column,
@@ -11,6 +8,9 @@ import {
   JoinColumn,
   OneToOne,
 } from 'typeorm';
+import { Kategori } from '../../kategori/entities/kategori.entity';
+import { Perusahaan } from '../../perusahaan/entities/perusahaan.entity';
+import { AsetDetail } from '../../aset-detail/entities/aset-detail.entity';
 
 @Entity('ifg_dt_aset')
 export class Aset {
