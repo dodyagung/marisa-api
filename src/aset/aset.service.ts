@@ -36,6 +36,9 @@ export class AsetService {
         perusahaan: true,
         aset_detail: true,
       },
+      order: {
+        aset_id: 'DESC',
+      },
     });
   }
 
