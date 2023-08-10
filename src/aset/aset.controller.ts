@@ -18,28 +18,28 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 export class AsetController {
   constructor(private readonly asetService: AsetService) {}
 
-  // @Post()
-  // create(@Body() createAssetDto: CreateAssetDto) {
-  //   return this.assetService.create(createAssetDto);
-  // }
-
   @Get('/')
   findAll() {
     return this.asetService.findAll();
   }
 
+  @Post('/input')
+  create(@Body() createasetDto: CreateAsetDto) {
+    return this.asetService.create(createasetDto);
+  }
+
   // @Get(':id')
   // findOne(@Param('id') id: string) {
-  //   return this.assetService.findOne(+id);
+  //   return this.asetService.findOne(+id);
   // }
 
   // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateAssetDto: UpdateAssetDto) {
-  //   return this.assetService.update(+id, updateAssetDto);
+  // update(@Param('id') id: string, @Body() updateasetDto: UpdateasetDto) {
+  //   return this.asetService.update(+id, updateasetDto);
   // }
 
   // @Delete(':id')
   // remove(@Param('id') id: string) {
-  //   return this.assetService.remove(+id);
+  //   return this.asetService.remove(+id);
   // }
 }

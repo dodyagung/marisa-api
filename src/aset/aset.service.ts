@@ -12,9 +12,9 @@ export class AsetService {
     private asetRepository: Repository<Aset>,
   ) {}
 
-  // create(createAssetDto: CreateAssetDto) {
-  //   return 'This action adds a new asset';
-  // }
+  create(createAsetDto: CreateAsetDto) {
+    return 'This action adds a new asset';
+  }
 
   findAll(): Promise<Aset[]> {
     return this.asetRepository.find({
