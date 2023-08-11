@@ -1,15 +1,31 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePerusahaanDto } from './dto/create-perusahaan.dto';
 import { UpdatePerusahaanDto } from './dto/update-perusahaan.dto';
+import { Perusahaan } from './entities/perusahaan.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class PerusahaanService {
+  constructor(
+    @InjectRepository(Perusahaan)
+    private perusahaanRepository: Repository<Perusahaan>,
+  ) {}
+
   create(createPerusahaanDto: CreatePerusahaanDto) {
     return 'This action adds a new perusahaan';
   }
 
-  findAll() {
-    return `This action returns all perusahaan`;
+  findAll(): Promise<Perusahaan[]> {
+    return this.perusahaanRepository.find({
+      select: {
+        perusahaan_id: true,
+        name: true,
+      },
+      order: {
+        name: 'ASC',
+      },
+    });
   }
 
   findOne(id: number) {

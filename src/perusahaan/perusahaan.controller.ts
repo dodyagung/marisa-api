@@ -20,10 +20,10 @@ export class PerusahaanController {
   //   return this.perusahaanService.create(createPerusahaanDto);
   // }
 
-  // @Get()
-  // findAll() {
-  //   return this.perusahaanService.findAll();
-  // }
+  @Get('/')
+  findAll() {
+    return this.perusahaanService.findAll();
+  }
 
   // @Get(':id')
   // findOne(@Param('id') id: string) {
