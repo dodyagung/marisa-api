@@ -20,10 +20,10 @@ export class StatusController {
   //   return this.statusService.create(createStatusDto);
   // }
 
-  // @Get()
-  // findAll() {
-  //   return this.statusService.findAll();
-  // }
+  @Get('/okupansi')
+  findAll() {
+    return this.statusService.findAllOccupancy();
+  }
 
   // @Get(':id')
   // findOne(@Param('id') id: string) {

@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('ifg_tr_status')
+@Entity('ifg_m_status')
 export class Status {
   @PrimaryGeneratedColumn()
   status_id: number;
