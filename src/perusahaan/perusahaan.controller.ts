@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { PerusahaanService } from './perusahaan.service';
 import { CreatePerusahaanDto } from './dto/create-perusahaan.dto';
 import { UpdatePerusahaanDto } from './dto/update-perusahaan.dto';
@@ -7,28 +15,28 @@ import { UpdatePerusahaanDto } from './dto/update-perusahaan.dto';
 export class PerusahaanController {
   constructor(private readonly perusahaanService: PerusahaanService) {}
 
-  @Post()
-  create(@Body() createPerusahaanDto: CreatePerusahaanDto) {
-    return this.perusahaanService.create(createPerusahaanDto);
-  }
+  // @Post()
+  // create(@Body() createPerusahaanDto: CreatePerusahaanDto) {
+  //   return this.perusahaanService.create(createPerusahaanDto);
+  // }
 
-  @Get()
-  findAll() {
-    return this.perusahaanService.findAll();
-  }
+  // @Get()
+  // findAll() {
+  //   return this.perusahaanService.findAll();
+  // }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.perusahaanService.findOne(+id);
-  }
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.perusahaanService.findOne(+id);
+  // }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePerusahaanDto: UpdatePerusahaanDto) {
-    return this.perusahaanService.update(+id, updatePerusahaanDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updatePerusahaanDto: UpdatePerusahaanDto) {
+  //   return this.perusahaanService.update(+id, updatePerusahaanDto);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.perusahaanService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.perusahaanService.remove(+id);
+  // }
 }

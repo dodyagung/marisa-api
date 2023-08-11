@@ -15,28 +15,28 @@ import { CreateProsesDto } from './dto/create-proses.dto';
 export class ProsesController {
   constructor(private readonly prosesService: ProsesService) {}
 
-  @Post()
-  create(@Body() createProseDto: CreateProsesDto) {
-    return this.prosesService.create(createProseDto);
-  }
+  // @Post()
+  // create(@Body() createProseDto: CreateProsesDto) {
+  //   return this.prosesService.create(createProseDto);
+  // }
 
-  @Get()
-  findAll() {
-    return this.prosesService.findAll();
-  }
+  // @Get()
+  // findAll() {
+  //   return this.prosesService.findAll();
+  // }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.prosesService.findOne(+id);
-  }
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.prosesService.findOne(+id);
+  // }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProseDto: UpdateProsesDto) {
-    return this.prosesService.update(+id, updateProseDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateProseDto: UpdateProsesDto) {
+  //   return this.prosesService.update(+id, updateProseDto);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.prosesService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.prosesService.remove(+id);
+  // }
 }
