@@ -17,16 +17,22 @@ export class Aset {
   @PrimaryGeneratedColumn()
   aset_id: number;
 
+  @Column()
+  kategori_id: number;
+
   @ManyToOne(() => Kategori)
   @JoinColumn({ name: 'kategori_id' })
   kategori: Kategori;
+
+  @Column()
+  perusahaan_id: number;
 
   @ManyToOne(() => Perusahaan)
   @JoinColumn({ name: 'perusahaan_id' })
   perusahaan: Perusahaan;
 
   @Column()
-  proses: number;
+  proses_id: number;
 
   @Column()
   name: string;

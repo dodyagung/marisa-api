@@ -13,7 +13,19 @@ export class AsetService {
   ) {}
 
   create(createAsetDto: CreateAsetDto) {
-    return 'This action adds a new asset';
+    const res = this.asetRepository.insert({
+      kategori_id: createAsetDto.kategori_id,
+      perusahaan_id: createAsetDto.perusahaan_id,
+      proses_id: 1,
+      name: createAsetDto.name,
+      kode_status: 2, // waiting approval
+      kode_status_asal: 1, // draft
+      created_by: createAsetDto.created_by,
+      description: createAsetDto.description,
+      kode_occupancy: createAsetDto.kode_occupancy,
+    });
+
+    return res;
   }
 
   findAll(): Promise<Aset[]> {

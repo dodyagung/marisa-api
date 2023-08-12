@@ -37,4 +37,7 @@ export class User {
 
   @Column()
   perusahaan_id: number;
+
+  @Column()
+  role: string;
 }
