@@ -62,7 +62,7 @@ export class AsetService {
   //   return `This action updates a #${id} asset`;
   // }
 
-  // remove(id: number): Promise<void> {
-  //   return `This action removes a #${id} asset`;
-  // }
+  remove(id: number) {
+    return this.asetRepository.delete(id);
+  }
 }

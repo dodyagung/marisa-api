@@ -38,8 +38,8 @@ export class AsetController {
   //   return this.asetService.update(+id, updateasetDto);
   // }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.asetService.remove(+id);
-  // }
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.asetService.remove(+id);
+  }
 }
