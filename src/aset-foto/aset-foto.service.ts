@@ -20,8 +20,8 @@ export class AsetFotoService {
   //   return `This action returns all asetFoto`;
   // }
 
-  async findOne(id: number): Promise<AsetFoto | null> {
-    const result = await this.asetFotoRepository.findOne({
+  async findOne(id: number): Promise<AsetFoto[] | null> {
+    const result = await this.asetFotoRepository.find({
       select: {
         aset_foto_id: true,
         filename: true,
@@ -32,7 +32,7 @@ export class AsetFotoService {
       },
     });
 
-    if (result === null) {
+    if (result.length === 0) {
       throw new NotFoundException();
     }
 
