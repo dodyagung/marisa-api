@@ -37,7 +37,7 @@ export class AsetDetailService {
         tgl_perolehan: true,
       },
       where: {
-        aset_detail_id: id,
+        aset_id: id,
       },
     });
   }
