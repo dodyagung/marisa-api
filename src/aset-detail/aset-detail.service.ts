@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateAsetDetailDto } from './dto/create-aset-detail.dto';
 import { UpdateAsetDetailDto } from './dto/update-aset-detail.dto';
 import { AsetDetail } from './entities/aset-detail.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { log } from 'console';
 
 @Injectable()
 export class AsetDetailService {
@@ -20,8 +21,8 @@ export class AsetDetailService {
   //   return `This action returns all asetDetail`;
   // }
 
-  findOne(id: number): Promise<AsetDetail | null> {
-    return this.asetDetailRepository.findOne({
+  async findOne(id: number): Promise<AsetDetail | null> {
+    const result = await this.asetDetailRepository.findOne({
       select: {
         aset_detail_id: true,
         kode_pos: true,
@@ -40,6 +41,12 @@ export class AsetDetailService {
         aset_id: id,
       },
     });
+
+    if (result === null) {
+      throw new NotFoundException();
+    }
+
+    return result;
   }
 
   // update(id: number, updateAsetDetailDto: UpdateAsetDetailDto) {

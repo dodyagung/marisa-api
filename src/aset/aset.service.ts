@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateAsetDto } from './dto/create-aset.dto';
 import { UpdateAsetDto } from './dto/update-aset.dto';
 import { Aset } from './entities/aset.entity';
@@ -54,8 +54,8 @@ export class AsetService {
     });
   }
 
-  findOne(id: number): Promise<Aset | null> {
-    return this.asetRepository.findOne({
+  async findOne(id: number): Promise<Aset | null> {
+    const result = await this.asetRepository.findOne({
       select: {
         aset_id: true,
         name: true,
@@ -78,6 +78,12 @@ export class AsetService {
         aset_detail: true,
       },
     });
+
+    if (result === null) {
+      throw new NotFoundException();
+    }
+
+    return result;
   }
 
   // update(id: number, updateAssetDto: UpdateAssetDto): Promise<Asset> {
