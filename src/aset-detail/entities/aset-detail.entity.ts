@@ -38,6 +38,6 @@ export class AsetDetail {
   @Column()
   nilai_depresiasi: number;
 
-  @Column()
+  @Column({ type: 'date' })
   tgl_perolehan: Date;
 }
