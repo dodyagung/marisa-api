@@ -11,7 +11,7 @@ import { AsetDetailService } from './aset-detail.service';
 import { CreateAsetDetailDto } from './dto/create-aset-detail.dto';
 import { UpdateAsetDetailDto } from './dto/update-aset-detail.dto';
 
-@Controller('aset-detail')
+@Controller('aset/detail')
 export class AsetDetailController {
   constructor(private readonly asetDetailService: AsetDetailService) {}
 
@@ -25,10 +25,10 @@ export class AsetDetailController {
   //   return this.asetDetailService.findAll();
   // }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.asetDetailService.findOne(+id);
-  // }
+  @Get('/:id')
+  findOne(@Param('id') id: string) {
+    return this.asetDetailService.findOne(+id);
+  }
 
   // @Patch(':id')
   // update(@Param('id') id: string, @Body() updateAsetDetailDto: UpdateAsetDetailDto) {

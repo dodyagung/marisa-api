@@ -9,7 +9,7 @@ export class AsetDetail {
   aset_id: number;
 
   @Column()
-  kode_post: number;
+  kode_pos: number;
 
   @Column()
   detail_alamat: string;
