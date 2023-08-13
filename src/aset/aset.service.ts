@@ -54,9 +54,34 @@ export class AsetService {
     });
   }
 
-  // findOne(id: number): Promise<Asset | null> {
-  //   return `This action returns a #${id} asset`;
-  // }
+  findOne(id: number): Promise<Aset | null> {
+    return this.asetRepository.findOne({
+      select: {
+        aset_id: true,
+        name: true,
+        kategori: {
+          name: true,
+        },
+        perusahaan: {
+          name: true,
+        },
+        aset_detail: {
+          detail_alamat: true,
+        },
+      },
+      where: {
+        aset_id: id,
+      },
+      relations: {
+        kategori: true,
+        perusahaan: true,
+        aset_detail: true,
+      },
+      order: {
+        aset_id: 'DESC',
+      },
+    });
+  }
 
   // update(id: number, updateAssetDto: UpdateAssetDto): Promise<Asset> {
   //   return `This action updates a #${id} asset`;

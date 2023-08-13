@@ -18,20 +18,20 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 export class AsetController {
   constructor(private readonly asetService: AsetService) {}
 
-  @Get('/')
-  findAll() {
-    return this.asetService.findAll();
-  }
-
   @Post('/input')
   create(@Body() createasetDto: CreateAsetDto) {
     return this.asetService.create(createasetDto);
   }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.asetService.findOne(+id);
-  // }
+  @Get('/')
+  findAll() {
+    return this.asetService.findAll();
+  }
+
+  @Get('/:id')
+  findOne(@Param('id') id: string) {
+    return this.asetService.findOne(+id);
+  }
 
   // @Patch(':id')
   // update(@Param('id') id: string, @Body() updateasetDto: UpdateasetDto) {
