@@ -68,6 +68,7 @@ export class AsetDetailService {
       nilai_aset_sekarang: updateAsetDetailDto.nilai_aset_sekarang,
       biaya_aset: updateAsetDetailDto.biaya_aset,
       nilai_depresiasi: updateAsetDetailDto.nilai_depresiasi,
+      tgl_perolehan: updateAsetDetailDto.tgl_perolehan,
     });
 
     return res;
