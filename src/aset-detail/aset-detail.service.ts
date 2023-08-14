@@ -49,9 +49,25 @@ export class AsetDetailService {
     return result;
   }
 
-  // update(id: number, updateAsetDetailDto: UpdateAsetDetailDto) {
-  //   return `This action updates a #${id} asetDetail`;
-  // }
+  update(id: number, updateAsetDetailDto: UpdateAsetDetailDto) {
+    const res = this.asetDetailRepository.update(
+      { aset_id: id },
+      {
+        kode_pos: updateAsetDetailDto.kode_pos,
+        detail_alamat: updateAsetDetailDto.detail_alamat,
+        nilai_aset_perolehan: updateAsetDetailDto.nilai_aset_perolehan,
+        luas: updateAsetDetailDto.luas,
+        panjang: updateAsetDetailDto.panjang,
+        lebar: updateAsetDetailDto.lebar,
+        jumlah_lantai: updateAsetDetailDto.jumlah_lantai,
+        nilai_aset_sekarang: updateAsetDetailDto.nilai_aset_sekarang,
+        biaya_aset: updateAsetDetailDto.biaya_aset,
+        nilai_depresiasi: updateAsetDetailDto.nilai_depresiasi,
+      },
+    );
+
+    return res;
+  }
 
   // remove(id: number) {
   //   return `This action removes a #${id} asetDetail`;

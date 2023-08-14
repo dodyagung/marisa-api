@@ -30,10 +30,13 @@ export class AsetDetailController {
     return this.asetDetailService.findOne(+id);
   }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateAsetDetailDto: UpdateAsetDetailDto) {
-  //   return this.asetDetailService.update(+id, updateAsetDetailDto);
-  // }
+  @Patch('/:id')
+  update(
+    @Param('id') id: string,
+    @Body() updateAsetDetailDto: UpdateAsetDetailDto,
+  ) {
+    return this.asetDetailService.update(+id, updateAsetDetailDto);
+  }
 
   // @Delete(':id')
   // remove(@Param('id') id: string) {
