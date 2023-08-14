@@ -33,10 +33,10 @@ export class AsetController {
     return this.asetService.findOne(+id);
   }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateasetDto: UpdateasetDto) {
-  //   return this.asetService.update(+id, updateasetDto);
-  // }
+  @Patch('/:id')
+  update(@Param('id') id: string, @Body() updateasetDto: UpdateAsetDto) {
+    return this.asetService.update(+id, updateasetDto);
+  }
 
   @Delete(':id')
   remove(@Param('id') id: string) {

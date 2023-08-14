@@ -93,9 +93,18 @@ export class AsetService {
     return result;
   }
 
-  // update(id: number, updateAssetDto: UpdateAssetDto): Promise<Asset> {
-  //   return `This action updates a #${id} asset`;
-  // }
+  update(id: number, updateAssetDto: UpdateAsetDto) {
+    const res = this.asetRepository.save({
+      aset_id: id,
+      kategori_id: updateAssetDto.kategori_id,
+      name: updateAssetDto.name,
+      last_updated_by: updateAssetDto.last_updated_by,
+      description: updateAssetDto.description,
+      kode_occupancy: updateAssetDto.kode_occupancy,
+    });
+
+    return res;
+  }
 
   remove(id: number) {
     return this.asetRepository.delete(id);
