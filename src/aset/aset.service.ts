@@ -59,7 +59,9 @@ export class AsetService {
       select: {
         aset_id: true,
         name: true,
+        description: true,
         kategori: {
+          kategori_id: true,
           name: true,
         },
         perusahaan: {
@@ -67,6 +69,10 @@ export class AsetService {
         },
         aset_detail: {
           detail_alamat: true,
+        },
+        occupancy: {
+          status_id: true,
+          name: true,
         },
       },
       where: {
@@ -76,6 +82,7 @@ export class AsetService {
         kategori: true,
         perusahaan: true,
         aset_detail: true,
+        occupancy: true,
       },
     });
 

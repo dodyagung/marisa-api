@@ -11,6 +11,7 @@ import {
 import { Kategori } from '../../kategori/entities/kategori.entity';
 import { Perusahaan } from '../../perusahaan/entities/perusahaan.entity';
 import { AsetDetail } from '../../aset-detail/entities/aset-detail.entity';
+import { Status } from '../../status/entities/status.entity';
 
 @Entity('ifg_dt_aset')
 export class Aset {
@@ -60,6 +61,10 @@ export class Aset {
 
   @Column()
   kode_occupancy: number;
+
+  @ManyToOne(() => Status)
+  @JoinColumn({ name: 'kode_occupancy' })
+  occupancy: Status;
 
   @OneToOne(() => AsetDetail)
   @JoinColumn({ name: 'aset_id' })
