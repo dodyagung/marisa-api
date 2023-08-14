@@ -1,4 +1,8 @@
 export class CreateAsetDetailDto {
+  aset_detail_id: number;
+
+  aset_id: number;
+
   kode_pos: number;
 
   detail_alamat: string;

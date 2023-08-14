@@ -13,9 +13,14 @@ export class AsetDetailService {
     private asetDetailRepository: Repository<AsetDetail>,
   ) {}
 
-  // create(createAsetDetailDto: CreateAsetDetailDto) {
-  //   return 'This action adds a new asetDetail';
-  // }
+  create(createAsetDetailDto: CreateAsetDetailDto) {
+    const res = this.asetDetailRepository.insert({
+      aset_detail_id: createAsetDetailDto.aset_detail_id,
+      aset_id: createAsetDetailDto.aset_id,
+    });
+
+    return res;
+  }
 
   // findAll() {
   //   return `This action returns all asetDetail`;
@@ -50,21 +55,20 @@ export class AsetDetailService {
   }
 
   update(id: number, updateAsetDetailDto: UpdateAsetDetailDto) {
-    const res = this.asetDetailRepository.update(
-      { aset_id: id },
-      {
-        kode_pos: updateAsetDetailDto.kode_pos,
-        detail_alamat: updateAsetDetailDto.detail_alamat,
-        nilai_aset_perolehan: updateAsetDetailDto.nilai_aset_perolehan,
-        luas: updateAsetDetailDto.luas,
-        panjang: updateAsetDetailDto.panjang,
-        lebar: updateAsetDetailDto.lebar,
-        jumlah_lantai: updateAsetDetailDto.jumlah_lantai,
-        nilai_aset_sekarang: updateAsetDetailDto.nilai_aset_sekarang,
-        biaya_aset: updateAsetDetailDto.biaya_aset,
-        nilai_depresiasi: updateAsetDetailDto.nilai_depresiasi,
-      },
-    );
+    const res = this.asetDetailRepository.save({
+      aset_detail_id: id,
+      aset_id: id,
+      kode_pos: updateAsetDetailDto.kode_pos,
+      detail_alamat: updateAsetDetailDto.detail_alamat,
+      nilai_aset_perolehan: updateAsetDetailDto.nilai_aset_perolehan,
+      luas: updateAsetDetailDto.luas,
+      panjang: updateAsetDetailDto.panjang,
+      lebar: updateAsetDetailDto.lebar,
+      jumlah_lantai: updateAsetDetailDto.jumlah_lantai,
+      nilai_aset_sekarang: updateAsetDetailDto.nilai_aset_sekarang,
+      biaya_aset: updateAsetDetailDto.biaya_aset,
+      nilai_depresiasi: updateAsetDetailDto.nilai_depresiasi,
+    });
 
     return res;
   }
