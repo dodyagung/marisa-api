@@ -1,1 +1,5 @@
-export class CreateAsetFotoDto {}
+export class CreateAsetFotoDto {
+  filename: string;
+
+  url: string;
+}

@@ -6,10 +6,14 @@ import {
   Patch,
   Param,
   Delete,
+  UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
 import { AsetFotoService } from './aset-foto.service';
 import { CreateAsetFotoDto } from './dto/create-aset-foto.dto';
 import { UpdateAsetFotoDto } from './dto/update-aset-foto.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { ConfigService } from '@nestjs/config';
 
 @Controller('aset/foto')
 export class AsetFotoController {
@@ -30,10 +34,15 @@ export class AsetFotoController {
     return this.asetFotoService.findOne(+id);
   }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateAsetFotoDto: UpdateAsetFotoDto) {
-  //   return this.asetFotoService.update(+id, updateAsetFotoDto);
-  // }
+  @Patch(':id')
+  @UseInterceptors(FileInterceptor('file'))
+  update(
+    @Param('id') id: string,
+    @UploadedFile() file: Express.Multer.File,
+    @Body() updateAsetFotoDto: UpdateAsetFotoDto,
+  ) {
+    return this.asetFotoService.update(+id, file, updateAsetFotoDto);
+  }
 
   // @Delete(':id')
   // remove(@Param('id') id: string) {

@@ -1,15 +1,27 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateAsetFotoDto } from './dto/create-aset-foto.dto';
 import { UpdateAsetFotoDto } from './dto/update-aset-foto.dto';
 import { AsetFoto } from './entities/aset-foto.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import {
+  ListBucketsCommand,
+  ListObjectsV2Command,
+  PutObjectCommand,
+  S3Client,
+} from '@aws-sdk/client-s3';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AsetFotoService {
   constructor(
     @InjectRepository(AsetFoto)
     private asetFotoRepository: Repository<AsetFoto>,
+    private configService: ConfigService,
   ) {}
 
   // create(createAsetFotoDto: CreateAsetFotoDto) {
@@ -39,9 +51,43 @@ export class AsetFotoService {
     return result;
   }
 
-  // update(id: number, updateAsetFotoDto: UpdateAsetFotoDto) {
-  //   return `This action updates a #${id} asetFoto`;
-  // }
+  async update(
+    id: number,
+    file: Express.Multer.File,
+    updateAsetFotoDto: UpdateAsetFotoDto,
+  ) {
+    const S3 = new S3Client({
+      region: 'auto',
+      endpoint: this.configService.get<string>('R2_URL_API'),
+      credentials: {
+        accessKeyId: this.configService.get<string>('R2_ACCESS_KEY_ID'),
+        secretAccessKey: this.configService.get<string>('R2_ACCESS_KEY_SECRET'),
+      },
+    });
+    const input = {
+      Body: file.buffer,
+      Bucket: 'pandawa',
+      Key: file.originalname,
+      ContentType: file.mimetype,
+    };
+    const command = new PutObjectCommand(input);
+    const response = await S3.send(command);
+
+    if (response.$metadata.httpStatusCode == 200) {
+      const res = this.asetFotoRepository.save({
+        aset_id: id,
+        filename: file.originalname,
+        url:
+          this.configService.get<string>('R2_URL_PUBLIC') +
+          '/' +
+          encodeURIComponent(file.originalname),
+      });
+
+      return res;
+    } else {
+      throw new InternalServerErrorException();
+    }
+  }
 
   // remove(id: number) {
   //   return `This action removes a #${id} asetFoto`;
