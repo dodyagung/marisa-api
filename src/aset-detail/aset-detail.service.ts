@@ -4,11 +4,13 @@ import { UpdateAsetDetailDto } from './dto/update-aset-detail.dto';
 import { AsetDetail } from './entities/aset-detail.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { log } from 'console';
+import { Aset } from '../aset/entities/aset.entity';
 
 @Injectable()
 export class AsetDetailService {
   constructor(
+    @InjectRepository(Aset)
+    private asetRepository: Repository<Aset>,
     @InjectRepository(AsetDetail)
     private asetDetailRepository: Repository<AsetDetail>,
   ) {}
@@ -55,6 +57,11 @@ export class AsetDetailService {
   }
 
   update(id: number, updateAsetDetailDto: UpdateAsetDetailDto) {
+    this.asetRepository.save({
+      aset_id: id,
+      kode_status: 2,
+    });
+
     const res = this.asetDetailRepository.save({
       aset_detail_id: id,
       aset_id: id,

@@ -8,17 +8,15 @@ import { UpdateAsetFotoDto } from './dto/update-aset-foto.dto';
 import { AsetFoto } from './entities/aset-foto.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import {
-  ListBucketsCommand,
-  ListObjectsV2Command,
-  PutObjectCommand,
-  S3Client,
-} from '@aws-sdk/client-s3';
+import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { ConfigService } from '@nestjs/config';
+import { Aset } from '../aset/entities/aset.entity';
 
 @Injectable()
 export class AsetFotoService {
   constructor(
+    @InjectRepository(Aset)
+    private asetRepository: Repository<Aset>,
     @InjectRepository(AsetFoto)
     private asetFotoRepository: Repository<AsetFoto>,
     private configService: ConfigService,
@@ -74,6 +72,11 @@ export class AsetFotoService {
     const response = await S3.send(command);
 
     if (response.$metadata.httpStatusCode == 200) {
+      this.asetRepository.save({
+        aset_id: id,
+        kode_status: 2,
+      });
+
       const res = this.asetFotoRepository.save({
         aset_id: id,
         filename: file.originalname,
