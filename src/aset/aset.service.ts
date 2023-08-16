@@ -147,6 +147,10 @@ export class AsetService {
           status_id: true,
           name: true,
         },
+        status: {
+          status_id: true,
+          name: true,
+        },
       },
       where: {
         aset_id: id,
@@ -156,6 +160,7 @@ export class AsetService {
         perusahaan: true,
         aset_detail: true,
         occupancy: true,
+        status: true,
       },
     });
 
@@ -169,6 +174,7 @@ export class AsetService {
   update(id: number, updateAssetDto: UpdateAsetDto) {
     const res = this.asetRepository.save({
       aset_id: id,
+      kode_status: 2,
       kategori_id: updateAssetDto.kategori_id,
       name: updateAssetDto.name,
       last_updated_by: updateAssetDto.last_updated_by,
