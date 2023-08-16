@@ -33,6 +33,11 @@ export class AsetController {
     return this.asetService.findOne(+id);
   }
 
+  @Get('/perusahaan/:id')
+  findByPerusahaan(@Param('id') id: string) {
+    return this.asetService.findByPerusahaan(+id);
+  }
+
   @Patch('/:id')
   update(@Param('id') id: string, @Body() updateasetDto: UpdateAsetDto) {
     return this.asetService.update(+id, updateasetDto);
