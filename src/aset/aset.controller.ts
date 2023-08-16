@@ -33,6 +33,16 @@ export class AsetController {
     return this.asetService.findNeedApproval();
   }
 
+  @Patch('/approve/:id')
+  approve(@Param('id') id: string, @Body() updateasetDto: UpdateAsetDto) {
+    return this.asetService.approve(+id, updateasetDto);
+  }
+
+  @Patch('/reject/:id')
+  reject(@Param('id') id: string, @Body() updateasetDto: UpdateAsetDto) {
+    return this.asetService.reject(+id, updateasetDto);
+  }
+
   @Get('/:id')
   findOne(@Param('id') id: string) {
     return this.asetService.findOne(+id);

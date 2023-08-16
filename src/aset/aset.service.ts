@@ -179,6 +179,24 @@ export class AsetService {
     return res;
   }
 
+  approve(id: number, updateAssetDto: UpdateAsetDto) {
+    const res = this.asetRepository.save({
+      aset_id: id,
+      kode_status: 10,
+    });
+
+    return res;
+  }
+
+  reject(id: number, updateAssetDto: UpdateAsetDto) {
+    const res = this.asetRepository.save({
+      aset_id: id,
+      kode_status: 99,
+    });
+
+    return res;
+  }
+
   remove(id: number) {
     return this.asetRepository.delete(id);
   }
