@@ -44,8 +44,8 @@ export class AsetFotoController {
     return this.asetFotoService.update(+id, file, updateAsetFotoDto);
   }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.asetFotoService.remove(+id);
-  // }
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.asetFotoService.remove(+id);
+  }
 }

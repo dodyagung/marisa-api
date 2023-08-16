@@ -89,7 +89,7 @@ export class AsetFotoService {
     }
   }
 
-  // remove(id: number) {
-  //   return `This action removes a #${id} asetFoto`;
-  // }
+  remove(id: number) {
+    return this.asetFotoRepository.delete(id);
+  }
 }
