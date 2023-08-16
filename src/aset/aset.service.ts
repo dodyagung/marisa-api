@@ -93,6 +93,40 @@ export class AsetService {
     });
   }
 
+  findNeedApproval(): Promise<Aset[]> {
+    return this.asetRepository.find({
+      select: {
+        aset_id: true,
+        name: true,
+        kategori: {
+          name: true,
+        },
+        perusahaan: {
+          name: true,
+        },
+        aset_detail: {
+          detail_alamat: true,
+        },
+        status: {
+          status_id: true,
+          name: true,
+        },
+      },
+      relations: {
+        kategori: true,
+        perusahaan: true,
+        aset_detail: true,
+        status: true,
+      },
+      where: {
+        kode_status: 2,
+      },
+      order: {
+        aset_id: 'DESC',
+      },
+    });
+  }
+
   async findOne(id: number): Promise<Aset | null> {
     const result = await this.asetRepository.findOne({
       select: {

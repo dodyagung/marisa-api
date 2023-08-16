@@ -28,6 +28,11 @@ export class AsetController {
     return this.asetService.findAll();
   }
 
+  @Get('/approval')
+  findNeedApproval() {
+    return this.asetService.findNeedApproval();
+  }
+
   @Get('/:id')
   findOne(@Param('id') id: string) {
     return this.asetService.findOne(+id);
