@@ -42,11 +42,15 @@ export class AsetService {
         aset_detail: {
           detail_alamat: true,
         },
+        status: {
+          name: true,
+        },
       },
       relations: {
         kategori: true,
         perusahaan: true,
         aset_detail: true,
+        status: true,
       },
       order: {
         aset_id: 'DESC',

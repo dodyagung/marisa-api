@@ -41,6 +41,10 @@ export class Aset {
   @Column()
   kode_status: number;
 
+  @ManyToOne(() => Status)
+  @JoinColumn({ name: 'kode_status' })
+  status: Status;
+
   @Column()
   kode_status_asal: number;
 
