@@ -30,6 +30,11 @@ export class DashboardController {
     return this.dashboardService.rekapPerKategori();
   }
 
+  @Get('/rekap-per-okupansi')
+  rekapPerOkupansi() {
+    return this.dashboardService.rekapPerOkupansi();
+  }
+
   // @Patch(':id')
   // update(
   //   @Param('id') id: string,

@@ -1,19 +1,28 @@
 import { Injectable } from '@nestjs/common';
 import { CreateDashboardDto } from './dto/create-dashboard.dto';
 import { UpdateDashboardDto } from './dto/update-dashboard.dto';
-import { RekapPerkategori } from './entities/dashboard.entity';
+import {
+  RekapPerKategori,
+  RekapPerOkupansi,
+} from './entities/dashboard.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class DashboardService {
   constructor(
-    @InjectRepository(RekapPerkategori)
-    private rekapPerkategoriRepository: Repository<RekapPerkategori>,
+    @InjectRepository(RekapPerKategori)
+    private rekapPerKategoriRepository: Repository<RekapPerKategori>,
+    @InjectRepository(RekapPerOkupansi)
+    private rekapPerOkupansiRepository: Repository<RekapPerOkupansi>,
   ) {}
 
-  rekapPerKategori(): Promise<RekapPerkategori[]> {
-    return this.rekapPerkategoriRepository.find();
+  rekapPerKategori(): Promise<RekapPerKategori[]> {
+    return this.rekapPerKategoriRepository.find();
+  }
+
+  rekapPerOkupansi(): Promise<RekapPerOkupansi[]> {
+    return this.rekapPerOkupansiRepository.find();
   }
 
   // create(createDashboardDto: CreateDashboardDto) {
