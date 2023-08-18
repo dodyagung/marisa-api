@@ -18,6 +18,7 @@ import { AsetLogModule } from './aset-log/aset-log.module';
 import { AttachmentModule } from './attachment/attachment.module';
 import { DokumenModule } from './dokumen/dokumen.module';
 import { FaqModule } from './faq/faq.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -51,6 +52,7 @@ import { FaqModule } from './faq/faq.module';
     AttachmentModule,
     DokumenModule,
     FaqModule,
+    DashboardModule,
   ],
   controllers: [AppController],
   providers: [AppService],
