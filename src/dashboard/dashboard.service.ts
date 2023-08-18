@@ -4,6 +4,7 @@ import { UpdateDashboardDto } from './dto/update-dashboard.dto';
 import {
   RekapPerKategori,
   RekapPerOkupansi,
+  RekapPerPerusahaan,
 } from './entities/dashboard.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -15,6 +16,8 @@ export class DashboardService {
     private rekapPerKategoriRepository: Repository<RekapPerKategori>,
     @InjectRepository(RekapPerOkupansi)
     private rekapPerOkupansiRepository: Repository<RekapPerOkupansi>,
+    @InjectRepository(RekapPerPerusahaan)
+    private rekapPerPerusahaanRepository: Repository<RekapPerPerusahaan>,
   ) {}
 
   rekapPerKategori(): Promise<RekapPerKategori[]> {
@@ -23,6 +26,10 @@ export class DashboardService {
 
   rekapPerOkupansi(): Promise<RekapPerOkupansi[]> {
     return this.rekapPerOkupansiRepository.find();
+  }
+
+  rekapPerPerusahaan(): Promise<RekapPerPerusahaan[]> {
+    return this.rekapPerPerusahaanRepository.find();
   }
 
   // create(createDashboardDto: CreateDashboardDto) {

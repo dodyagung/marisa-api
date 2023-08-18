@@ -26,3 +26,21 @@ export class RekapPerOkupansi {
   @Column()
   total_nilai_aset: number;
 }
+
+@Entity('ifg_v_rekap_per_perusahaan')
+export class RekapPerPerusahaan {
+  @PrimaryColumn()
+  perusahaan_id: number;
+
+  @Column()
+  perusahaan: string;
+
+  @Column()
+  kode: string;
+
+  @Column()
+  jml_aset: number;
+
+  @Column()
+  total_nilai_aset: number;
+}
