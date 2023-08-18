@@ -22,4 +22,7 @@ export class RekapPerOkupansi {
 
   @Column()
   jml_aset: number;
+
+  @Column()
+  total_nilai_aset: number;
 }
